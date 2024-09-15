@@ -34,7 +34,54 @@ const config: Config = {
       fontFamily: {
         sans: ['Public Sans', 'sans-serif'],
         italic: ['Public Sans Italic', 'sans-serif']
-      }
+      },
+      fontSize: {
+        'preset-1': ['32px', {
+          lineHeight: '120%',
+          letterSpacing: '0',
+          fontWeight: '700',
+        }],
+        'preset-2': ['20px', {
+          lineHeight: '120%',
+          letterSpacing: '0',
+          fontWeight: '700',
+        }],
+        'preset-3': ['16px', {
+          lineHeight: '150%',
+          letterSpacing: '0',
+          fontWeight: '700',
+        }],
+        'preset-4': ['14px', {
+          lineHeight: '150%',
+          letterSpacing: '0',
+          fontWeight: '400',
+        }],
+        'preset-4-bold': ['14px', {
+          lineHeight: '150%',
+          letterSpacing: '0',
+          fontWeight: '700',
+        }],
+        'preset-5': ['12px', {
+          lineHeight: '150%',
+          letterSpacing: '0',
+          fontWeight: '400',
+        }],
+        'preset-5-bold': ['12px', {
+          lineHeight: '150%',
+          letterSpacing: '0',
+          fontWeight: '700',
+        }],
+      },
+      spacing: {
+        '50': '4px',
+        '100': '8px',
+        '150': '12px',
+        '200': '16px',
+        '250': '20px',
+        '300': '24px',
+        '400': '32px',
+        '500': '40px',
+      },
     },
   },
   plugins: [],
