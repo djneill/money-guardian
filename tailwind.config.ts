@@ -8,9 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        'background': '#171717'
+      },
       colors: {
         'beige-500': "#98908B",
-        'beige-100': "#F8Ff4F0",
+        'beige-100': "#F8F4F0",
         'grey-900': '#201F24',
         'grey-500': '#696868',
         'grey-300': '#B3B3B3',
