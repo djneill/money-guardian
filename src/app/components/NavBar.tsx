@@ -1,5 +1,7 @@
-import React from 'react'
-import Overview from '../icons/Overview'
+import React from 'react';
+import Link from 'next/link';
+import OverviewIcon from '../icons/OverviewIcon';
+import TransactionsIcon from '../icons/TransactionsIcon';
 
 export default function NavBar() {
     return (
@@ -7,10 +9,14 @@ export default function NavBar() {
             <div className="flex justify-around w-full mt-2 mx-4">
                 <ul className='flex flex-row gap-4'>
                     <li className='w-16 h-11 flex justify-center items-center'>
-                        <Overview />
+                        <Link href={'/'}>
+                            <OverviewIcon />
+                        </Link>
                     </li>
-                    <li className='w-16 h-11 flex justify-center items-center'>
-                        <a href="#" className="text-white">About</a>
+                    <li className='w-16 h-11 flex fill-white justify-center items-center'>
+                        <Link href={'/transactions'}>
+                            <TransactionsIcon />
+                        </Link>
                     </li>
                     <li className='w-16 h-11 flex justify-center items-center'>
                         <a href="#" className="text-white">Contact</a>

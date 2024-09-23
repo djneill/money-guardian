@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Overview({ width = 18, height = 19, color = "#b3b3b3" }) {
+export default function Overview({ width = 24, height = 24, color = "#b3b3b3" }) {
     return (
         <svg
             width={width}
@@ -8,7 +8,7 @@ export default function Overview({ width = 18, height = 19, color = "#b3b3b3" })
             viewBox="0 0 18 19"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
+            aria-label="Overview Page"
             role="img"
         >
             <path
