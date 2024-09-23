@@ -7,7 +7,7 @@
   --foreground: #F8F4F0;
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Public Sans';
   font-weight: 100 900;
   src: url('/assets/fonts/PublicSans-VariableFont_wght.ttf') format('truetype');
@@ -19,7 +19,7 @@
   font-style: italic;
   font-weight: 100 900;
   src: url('/assets/fonts/PublicSans-Italic-VariableFont_wght.ttf');
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {

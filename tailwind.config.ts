@@ -36,7 +36,7 @@ const config: Config = {
         'orange': '#BE6C49',
       },
       fontFamily: {
-        sans: ['Public Sans', 'sans-serif'],
+        sans: ['var(--font-public-sans)', 'sans-serif'],
         italic: ['Public Sans Italic', 'sans-serif']
       },
       fontSize: {
