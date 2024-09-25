@@ -11,11 +11,11 @@ export default function HeaderTitle() {
                 return 'Overview';
             case '/transactions':
                 return 'Transactions';
-            case '/budgets':
-                return 'Budgets';
+            case '/budget':
+                return 'Budget';
             case '/pots':
                 return 'Pots';
-            case '/recurring-bills':
+            case '/recurringBills':
                 return 'Recurring Bills';
             default:
                 return 'Money Guardian'

@@ -15,9 +15,9 @@ export default function NavBar() {
     const navItems = [
         { href: '/', icon: OverviewIcon },
         { href: '/transactions', icon: TransactionsIcon },
-        { href: '/budgets', icon: BudgetsIcon },
+        { href: '/budget', icon: BudgetsIcon },
         { href: '/pots', icon: PotsIcon },
-        { href: '/bills', icon: BillsIcon },
+        { href: '/recurringBills', icon: BillsIcon },
 
     ]
     return (
