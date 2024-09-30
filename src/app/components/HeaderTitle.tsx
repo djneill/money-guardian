@@ -23,7 +23,7 @@ export default function HeaderTitle() {
     };
 
     return (
-        <h1 className='text-black text-preset-1 font-sans pt-300 pl-200'>
+        <h1 className='text-black text-preset-1 font-sans'>
             {getTitle()}
         </h1>
     )
