@@ -6,7 +6,7 @@ import OverviewPots from "./components/OverviewPots";
 export default function Home() {
   return (
     <main>
-      <div className="mx-4 mt-6">
+      <div className="mx-4 my-6 pb-8">
         <HeaderTitle />
         <OverviewCurrentBalance />
         <OverviewPots />
