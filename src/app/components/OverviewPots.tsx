@@ -1,12 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 import CaretRight from '../icons/CaretRight'
-import Pots from '../icons/PotsIcon'
+import Pots from '../icons/Pots'
 import data from '@/app/data/data.json'
 import { currencyFormat } from '@/utils/currencyFormatter'
 
+const colors: string[] = ['bg-green', 'bg-cyan', 'bg-navy', 'bg-yellow'];
+
 export default function OverviewPots() {
-    const totalSavings = data.pots.reduce((sum, pot) => sum += pot.total, 0)
+    const totalSavings = data.pots.reduce((sum, pot) => sum += pot.total, 0);
+    const firstFourPots = data.pots.slice(0, 4);
+
     return (
         <div className='flex flex-col w-full h-80 rounded-lg bg-white my-8 px-5 py-6'>
             <div className=" flex flex-row justify-between">
@@ -19,7 +23,7 @@ export default function OverviewPots() {
 
             <div className='flex items-center my-5 bg-beige-100 h-28 rounded-lg p-4'>
                 <div className=''>
-                    <Pots className='stroke-green h-10 w-10' />
+                    <Pots className='fill-green w-10 h-10' />
                 </div>
                 <div className="px-4">
                     <p className='text-preset-4 text-gray-500 pb-3'>Total Saved</p>
@@ -28,26 +32,48 @@ export default function OverviewPots() {
             </div>
 
             <div className='grid grid-cols-2 mt-5 gap-4'>
-                <div className='border-l-green border-l-4 px-4 rounded-sm'>
-                    <p className='text-preset-5 text-grey-500'>{data.pots[0].name}</p>
-                    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[0].total)}</p>
-                </div>
-
-                <div className='border-l-cyan border-l-4 px-4 rounded-sm'>
-                    <p className='text-preset-5 text-grey-500'>{data.pots[1].name}</p>
-                    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[1].total)}</p>
-                </div>
-
-                <div className='border-l-navy border-l-4 px-4 rounded-sm'>
-                    <p className='text-preset-5 text-grey-500'>{data.pots[2].name}</p>
-                    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[2].total)}</p>
-                </div>
-
-                <div className='border-l-yellow border-l-4 px-4 rounded-sm'>
-                    <p className='text-preset-5 text-grey-500'>{data.pots[3].name}</p>
-                    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[3].total)}</p>
-                </div>
+                {firstFourPots.map((pot, index) => (
+                    <div key={pot.name} className='flex'>
+                        <div className={`px-25 h-full rounded ${colors[index]}`} ></div>
+                        <div className="flex flex-col px-4">
+                            <p className="text-preset-5 text-grey-500">{pot.name}</p>
+                            <p className="text-preset-4-bold text-grey-900">{currencyFormat(pot.total)}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )
 }
+
+{/* <div className='flex'>
+<div className='px-25 h-full rounded bg-green'></div>
+<div className="flex flex-col px-4">
+    <p className='text-preset-5 text-grey-500'>{data.pots[0].name}</p>
+    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[0].total)}</p>
+</div>
+</div>
+
+<div className='flex'>
+<div className='px-25 h-full rounded bg-cyan'></div>
+<div className="flex flex-col px-4">
+    <p className='text-preset-5 text-grey-500'>{data.pots[1].name}</p>
+    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[1].total)}</p>
+</div>
+</div>
+
+<div className='flex'>
+<div className='px-25 h-full rounded bg-navy'></div>
+<div className="flex flex-col px-4">
+    <p className='text-preset-5 text-grey-500'>{data.pots[2].name}</p>
+    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[2].total)}</p>
+</div>
+</div>
+
+<div className='flex'>
+<div className='px-25 h-full rounded bg-yellow'></div>
+<div className="flex flex-col px-4">
+    <p className='text-preset-5 text-grey-500'>{data.pots[3].name}</p>
+    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[3].total)}</p>
+</div>
+</div> */}

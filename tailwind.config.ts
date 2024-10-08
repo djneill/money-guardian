@@ -77,6 +77,7 @@ const config: Config = {
         }],
       },
       spacing: {
+        '25': '2px',
         '50': '4px',
         '100': '8px',
         '150': '12px',
