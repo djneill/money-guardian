@@ -12,7 +12,7 @@ export default function OverviewPots() {
     const firstFourPots = data.pots.slice(0, 4);
 
     return (
-        <div className='flex flex-col w-full h-80 rounded-lg bg-white my-8 px-5 py-6'>
+        <div className='flex flex-col w-full h-80 rounded-lg bg-white mt-8 mb-3 px-5 py-6'>
             <div className=" flex flex-row justify-between">
                 <p className='text-black text-preset-2'>Pots</p>
                 <Link className='flex flex-row  items-center' href={'/pots'} aria-label='See Details Pots'>
@@ -45,35 +45,3 @@ export default function OverviewPots() {
         </div>
     )
 }
-
-{/* <div className='flex'>
-<div className='px-25 h-full rounded bg-green'></div>
-<div className="flex flex-col px-4">
-    <p className='text-preset-5 text-grey-500'>{data.pots[0].name}</p>
-    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[0].total)}</p>
-</div>
-</div>
-
-<div className='flex'>
-<div className='px-25 h-full rounded bg-cyan'></div>
-<div className="flex flex-col px-4">
-    <p className='text-preset-5 text-grey-500'>{data.pots[1].name}</p>
-    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[1].total)}</p>
-</div>
-</div>
-
-<div className='flex'>
-<div className='px-25 h-full rounded bg-navy'></div>
-<div className="flex flex-col px-4">
-    <p className='text-preset-5 text-grey-500'>{data.pots[2].name}</p>
-    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[2].total)}</p>
-</div>
-</div>
-
-<div className='flex'>
-<div className='px-25 h-full rounded bg-yellow'></div>
-<div className="flex flex-col px-4">
-    <p className='text-preset-5 text-grey-500'>{data.pots[3].name}</p>
-    <p className="text-preset-4-bold text-grey-900">{currencyFormat(data.pots[3].total)}</p>
-</div>
-</div> */}
