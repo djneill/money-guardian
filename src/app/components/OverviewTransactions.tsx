@@ -3,6 +3,8 @@ import Link from 'next/link';
 import CaretRight from '../icons/CaretRight';
 import data from '@/app/data/data.json';
 import { currencyFormat } from '@/utils/currencyFormatter';
+import { shortDateFormat } from '@/utils/shortDateFormat';
+import Image from 'next/image';
 
 export default function OverviewTransactions() {
     const firstFiveTransactions = data.transactions.slice(0, 5)
@@ -16,20 +18,24 @@ export default function OverviewTransactions() {
                 </Link>
             </div>
 
-            <div className='flex flex-col mt-8'>
+            <div className='flex flex-col w-full'>
                 {firstFiveTransactions.map((pot, index) => (
-                    <div key={pot.name} className='flex'>
-                        <img
-                            width={32}
-                            height={32}
-                            src={data.transactions[index].avatar}
-                            alt={`Avatar for ${data.transactions[index].name || 'user'}`}
-                        />
-                        <p className='text-black text-preset-4-bold'>{data.transactions[index].name}</p>
-                        <div className="flex flex-col">
-                            <p className="text-green text-preset-4-bold">{currencyFormat(data.transactions[index].amount)}</p>
-                            <p className="text-grey-500 text-preset-5">{data.transactions[index].date}</p>
+                    <div key={pot.name} className='flex py-8 items-center justify-between border-b-grey-100 border-b-2'>
+                        <div className="flex items-center">
+                            <img
+                                width={36}
+                                height={36}
+                                src={data.transactions[index].avatar}
+                                alt={`Avatar for ${data.transactions[index].name || 'user'}`}
+                                className='rounded-full mr-4'
+                            />
+                            <p className='text-black text-preset-4-bold '>{data.transactions[index].name}</p>
                         </div>
+                        <div className="flex flex-col items-end ml-auto">
+                            <p className="text-green text-preset-4-bold">{currencyFormat(data.transactions[index].amount)}</p>
+                            <p className="text-grey-500 text-preset-5">{shortDateFormat(data.transactions[index].date)}</p>
+                        </div>
+                        <div className="py-1 bg-grey-100"></div>
                     </div>
                 ))}
 
