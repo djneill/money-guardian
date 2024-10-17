@@ -4,7 +4,7 @@ import CaretRight from '../icons/CaretRight';
 import data from '@/app/data/data.json';
 import { currencyFormat } from '@/utils/currencyFormatter';
 import { shortDateFormat } from '@/utils/shortDateFormat';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function OverviewTransactions() {
     const firstFiveTransactions = data.transactions.slice(0, 5)
