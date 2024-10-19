@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import OverviewCurrentBalance from "./components/OverviewCurrentBalance";
 import OverviewPots from "./components/OverviewPots";
 import OverviewTransactions from "./components/OverviewTransactions";
+import OverviewBudgets from "./components/OverviewBudgets";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <OverviewCurrentBalance />
         <OverviewPots />
         <OverviewTransactions />
+        <OverviewBudgets />
       </div>
       <NavBar />
     </main>

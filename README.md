@@ -1,4 +1,4 @@
-# Green Guardian
+# Money Guardian
 
 ## Personal Finance App
 
@@ -6,7 +6,7 @@ Green Guardian is an all-in-one personal finance app designed to promote good fi
 
 ### Features
 
-Green Guardian includes:
+Money Guardian includes:
 
 - **Overview**: Displays current balance, income, expenses, savings pots, recent transactions, budget chart, and recurring bills
 - **Transactions**: Detailed log of financial activities
@@ -16,7 +16,7 @@ Green Guardian includes:
 
 ### Technology Stack
 
-Green Guardian is currently being developed as a Web App using:
+Money Guardian is currently being developed as a Web App using:
 
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)

@@ -17,7 +17,6 @@ export default function OverviewTransactions() {
                     <CaretRight />
                 </Link>
             </div>
-
             <div className='flex flex-col w-full'>
                 {firstFiveTransactions.map((pot, index) => (
                     <div key={pot.name} className='flex py-8 items-center justify-between border-b-grey-100 border-b-2'>
@@ -38,10 +37,7 @@ export default function OverviewTransactions() {
                         <div className="py-1 bg-grey-100"></div>
                     </div>
                 ))}
-
             </div>
-
-
         </div>
     )
 }
