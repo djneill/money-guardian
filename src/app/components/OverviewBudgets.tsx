@@ -3,13 +3,21 @@ import Link from 'next/link';
 import CaretRight from '../icons/CaretRight';
 import data from '@/app/data/data.json';
 import { currencyFormat } from '@/utils/currencyFormatter';
+import PieChart from '@/app/components/PieChart';
 
 const colors: string[] = ['bg-green', 'bg-cyan', 'bg-yellow', 'bg-navy']
+const pieColors: string[] = ['#277C78', '#82C9D7', '#F2CDAC', '#626070']
 
 export default function OverviewBudgets() {
 
     const totalBudget = data.budgets.reduce((sum, max) => sum += max.maximum, 0)
     const firstFourBudgets = data.budgets.slice(0, 4)
+
+    const chartData = firstFourBudgets.map((budget, index) => ({
+        category: budget.category,
+        amount: budget.maximum,
+        color: pieColors[index]
+    }));
 
     return (
         <div className='flex flex-col w-full rounded-lg bg-white my-4 pt-6 px-5'>
@@ -21,6 +29,9 @@ export default function OverviewBudgets() {
                 </Link>
             </div>
 
+            <div className="flex mt-5">
+                <PieChart data={chartData} limit={totalBudget} />
+            </div>
             <div className="grid grid-cols-2 mt-5 gap-4">
                 {firstFourBudgets.map((budget, index) => (
                     <div key={budget.category} className='flex'>
@@ -36,3 +47,14 @@ export default function OverviewBudgets() {
         </div>
     )
 }
+
+// const augustTransactionTotal = data.transactions.reduce((total, transaction) => {
+//     const transactionDate = new Date(transaction.date);
+//     if (transactionDate.getMonth() === 7) { // 7 represents August
+//         return total + transaction.amount;
+//     }
+//     return total;
+// }, 0);
+// console.log(augustTransactionTotal)
+
+// const remainingBudget = Math.max(totalBudget - augustTransactionTotal, 0);
