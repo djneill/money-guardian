@@ -31,8 +31,8 @@ export default function OverviewBudgets() {
         <div className='flex flex-col w-full rounded-lg bg-white my-4 py-6 px-5'>
             <div className="flex flex-row items-center justify-between">
                 <h1 className='text-black text-preset-2'>Budgets</h1>
-                <Link className='flex items-center' href={'/budget'} aria-label='See budgets'>
-                    <p className="text-preset-4 text-gray-500 mr-4">See Budgets</p>
+                <Link className='flex items-center' href={'/budget'} aria-label='See Details budgets'>
+                    <p className="text-preset-4 text-gray-500 mr-4">See Details</p>
                     <CaretRight />
                 </Link>
             </div>
