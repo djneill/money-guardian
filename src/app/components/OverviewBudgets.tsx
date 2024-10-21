@@ -13,6 +13,14 @@ export default function OverviewBudgets() {
     const totalBudget = data.budgets.reduce((sum, max) => sum += max.maximum, 0)
     const firstFourBudgets = data.budgets.slice(0, 4)
 
+    const augustTransactionTotal = data.transactions.reduce((total, transaction) => {
+        const transactionDate = new Date(transaction.date);
+        if (transactionDate.getMonth() === 7) { // 7 represents August
+            return total + transaction.amount;
+        }
+        return Math.abs(total);
+    }, 0);
+
     const chartData = firstFourBudgets.map((budget, index) => ({
         category: budget.category,
         amount: budget.maximum,
@@ -20,7 +28,7 @@ export default function OverviewBudgets() {
     }));
 
     return (
-        <div className='flex flex-col w-full rounded-lg bg-white my-4 pt-6 px-5'>
+        <div className='flex flex-col w-full rounded-lg bg-white my-4 py-6 px-5'>
             <div className="flex flex-row items-center justify-between">
                 <h1 className='text-black text-preset-2'>Budgets</h1>
                 <Link className='flex items-center' href={'/budget'} aria-label='See budgets'>
@@ -30,7 +38,7 @@ export default function OverviewBudgets() {
             </div>
 
             <div className="flex mt-5">
-                <PieChart data={chartData} limit={totalBudget} />
+                <PieChart data={chartData} limit={totalBudget} totalSpent={augustTransactionTotal} />
             </div>
             <div className="grid grid-cols-2 mt-5 gap-4">
                 {firstFourBudgets.map((budget, index) => (
@@ -48,13 +56,3 @@ export default function OverviewBudgets() {
     )
 }
 
-// const augustTransactionTotal = data.transactions.reduce((total, transaction) => {
-//     const transactionDate = new Date(transaction.date);
-//     if (transactionDate.getMonth() === 7) { // 7 represents August
-//         return total + transaction.amount;
-//     }
-//     return total;
-// }, 0);
-// console.log(augustTransactionTotal)
-
-// const remainingBudget = Math.max(totalBudget - augustTransactionTotal, 0);

@@ -15,9 +15,10 @@ interface BudgetItem {
 interface PieChartProps {
     data: BudgetItem[];
     limit: number;
+    totalSpent: number;
 }
 
-export default function PieChart({ data, limit }: PieChartProps) {
+export default function PieChart({ data, limit, totalSpent }: PieChartProps) {
     const chartRef = useRef<ChartJS<"doughnut", number[], unknown>>(null);
 
     const createGradient = (ctx: CanvasRenderingContext2D, color: string) => {
@@ -53,7 +54,7 @@ export default function PieChart({ data, limit }: PieChartProps) {
                 data: data.map(item => item.amount),
                 backgroundColor: data.map(item => shadeColor(item.color, -30)), // Darker shade
                 borderWidth: 0,
-                offset: 3, // Creates the bevel effect
+                offset: 1, // Creates the bevel effect
             }
         ]
     };
@@ -76,8 +77,6 @@ export default function PieChart({ data, limit }: PieChartProps) {
         }
     };
 
-    const totalSpent = data.reduce((sum, item) => sum + item.amount, 0);
-
     useEffect(() => {
         const chart = chartRef.current;
         if (chart) {
@@ -94,8 +93,8 @@ export default function PieChart({ data, limit }: PieChartProps) {
         <div className='relative w-full h-full'>
             <Doughnut data={chartData} options={options} ref={chartRef} />
             <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
-                <div className="text-3xl font-bold">{currencyFormat(totalSpent)}</div>
-                <div className="text-sm text-gray-500">of {currencyFormat(limit)} limit</div>
+                <div className="text-preset-1 text-black">{currencyFormat(totalSpent)}</div>
+                <div className="text-preset-5 text-gray-500">of {currencyFormat(limit)} limit</div>
             </div>
         </div>
     );
