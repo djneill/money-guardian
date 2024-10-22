@@ -21,6 +21,17 @@ export default function OverviewBudgets() {
         return Math.abs(total);
     }, 0);
 
+    // Saving for db integration
+    // const currentMonthTransactionTotal = data.transactions.reduce((total, transaction) => {
+    //     const transactionDate = new Date(transaction.date);
+    //     const currentDate = new Date();
+    //     if (transactionDate.getMonth() === currentDate.getMonth() &&
+    //         transactionDate.getFullYear() === currentDate.getFullYear()) {
+    //         return total + transaction.amount;
+    //     }
+    //     return Math.abs(total);
+    // }, 0);
+
     const chartData = firstFourBudgets.map((budget, index) => ({
         category: budget.category,
         amount: budget.maximum,
