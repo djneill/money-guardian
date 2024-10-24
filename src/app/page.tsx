@@ -9,7 +9,7 @@ import OverviewRecurringBills from "./components/OverviewRecurringBills";
 export default function Home() {
   return (
     <main>
-      <div className="mx-4 my-6 pb-8 mb-12">
+      <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
         <HeaderTitle />
         <OverviewCurrentBalance />
         <OverviewPots />
