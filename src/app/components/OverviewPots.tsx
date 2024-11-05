@@ -21,26 +21,27 @@ export default function OverviewPots() {
                 </Link>
             </div>
 
-            <div className='flex items-center my-5 bg-beige-100 h-28 rounded-lg p-4'>
-                <div className=''>
-                    <Pots className='fill-green w-10 h-10' />
-                </div>
-                <div className="px-4">
-                    <p className='text-preset-4 text-gray-500 pb-3'>Total Saved</p>
-                    <p className='text-preset-1 text-grey-900'>{currencyFormat(totalSavings)}</p>
-                </div>
-            </div>
-
-            <div className='grid grid-cols-2 mt-5 gap-4'>
-                {firstFourPots.map((pot, index) => (
-                    <div key={pot.name} className='flex'>
-                        <div className={`px-25 h-full rounded ${colors[index]}`} ></div>
-                        <div className="flex flex-col px-4">
-                            <p className="text-preset-5 text-grey-500">{pot.name}</p>
-                            <p className="text-preset-4-bold text-grey-900">{currencyFormat(pot.total)}</p>
-                        </div>
+            <div className="sm:flex sm:flex-row sm:w-full sm:h-full sm:justify-center sm:gap-5 sm:items-center">
+                <div className='flex items-center sm:w-full my-5 sm:my-0 bg-beige-100 h-28 rounded-lg p-4'>
+                    <div className=''>
+                        <Pots className='fill-green w-10 h-10' />
                     </div>
-                ))}
+                    <div className="px-4">
+                        <p className='text-preset-4 text-gray-500 pb-3'>Total Saved</p>
+                        <p className='text-preset-1 text-grey-900'>{currencyFormat(totalSavings)}</p>
+                    </div>
+                </div>
+                <div className='grid grid-cols-2 mt-5 sm:w-full sm:mt-0 gap-4'>
+                    {firstFourPots.map((pot, index) => (
+                        <div key={pot.name} className='flex'>
+                            <div className={`px-25 h-full rounded ${colors[index]}`} ></div>
+                            <div className="flex flex-col px-4">
+                                <p className="text-preset-5 text-grey-500">{pot.name}</p>
+                                <p className="text-preset-4-bold text-grey-900">{currencyFormat(pot.total)}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
