@@ -48,19 +48,21 @@ export default function OverviewBudgets() {
                 </Link>
             </div>
 
-            <div className="flex mt-5">
-                <PieChart data={chartData} limit={totalBudget} totalSpent={augustTransactionTotal} />
-            </div>
-            <div className="grid grid-cols-2 mt-5 gap-4">
-                {firstFourBudgets.map((budget, index) => (
-                    <div key={budget.category} className='flex'>
-                        <div className={`px-25 h-full rounded ${colors[index]}`}></div>
-                        <div className='flex flex-col px-4'>
-                            <p className='text-preset-5 text-grey-500'>{budget.category}</p>
-                            <p className='text-preset-4-bold text-grey-900'>{currencyFormat(budget.maximum)}</p>
+            <div className="flex flex-col sm:flex-row sm:w-full sm:h-full sm:justify-center sm:gap-5 sm:items-center">
+                <div className="flex mt-5 sm:justify-center sm:items-center sm:mx-auto">
+                    <PieChart data={chartData} limit={totalBudget} totalSpent={augustTransactionTotal} />
+                </div>
+                <div className="grid grid-cols-2 mt-5 gap-4 sm:grid-cols-1 sm:ml-auto">
+                    {firstFourBudgets.map((budget, index) => (
+                        <div key={budget.category} className='flex'>
+                            <div className={`px-25 h-full rounded ${colors[index]}`}></div>
+                            <div className='flex flex-col px-4'>
+                                <p className='text-preset-5 text-grey-500'>{budget.category}</p>
+                                <p className='text-preset-4-bold text-grey-900'>{currencyFormat(budget.maximum)}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
         </div>
