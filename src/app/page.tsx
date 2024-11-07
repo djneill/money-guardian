@@ -12,10 +12,16 @@ export default function Home() {
       <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
         <HeaderTitle />
         <OverviewCurrentBalance />
-        <OverviewPots />
-        <OverviewTransactions />
-        <OverviewBudgets />
-        <OverviewRecurringBills />
+        <div className="grid grid-cols-1 lg:grid lg:grid-cols-2 lg:gap-6">
+          <div className="lg:space-y-6">
+            <OverviewPots />
+            <OverviewTransactions />
+          </div>
+          <div className="lg:space-y-6">
+            <OverviewBudgets />
+            <OverviewRecurringBills />
+          </div>
+        </div>
       </div>
       <NavBar />
     </main>

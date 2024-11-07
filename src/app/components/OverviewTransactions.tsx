@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function OverviewTransactions() {
     const firstFiveTransactions = data.transactions.slice(0, 5)
     return (
-        <div className='flex flex-col pt-6 px-5 w-full rounded-lg bg-white my-4'>
+        <div className='flex flex-col pt-6 px-5 w-full rounded-lg bg-white my-4 lg:h-[416px] lg:overflow-y-auto lg:scroll-smooth'>
             <div className="flex flex-row justify-between">
                 <p className='text-black text-preset-2'>Transactions</p>
                 <Link className='flex flex-row items-center' href={'/transactions'} aria-label='see details'>

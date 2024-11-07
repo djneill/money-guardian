@@ -12,7 +12,7 @@ export default function OverviewPots() {
     const firstFourPots = data.pots.slice(0, 4);
 
     return (
-        <div className='flex flex-col w-full h-80 rounded-lg bg-white mt-8 mb-3 px-5 py-6'>
+        <div className='flex flex-col w-full h-80 rounded-lg bg-white mt-4 mb-3 px-5 py-6'>
             <div className=" flex flex-row justify-between">
                 <p className='text-black text-preset-2'>Pots</p>
                 <Link className='flex flex-row  items-center' href={'/pots'} aria-label='See Details Pots'>
