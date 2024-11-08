@@ -9,21 +9,25 @@ import OverviewRecurringBills from "./components/OverviewRecurringBills";
 export default function Home() {
   return (
     <main>
-      <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
-        <HeaderTitle />
-        <OverviewCurrentBalance />
-        <div className="grid grid-cols-1 lg:grid lg:grid-cols-2 lg:gap-6">
-          <div className="lg:space-y-6">
-            <OverviewPots />
-            <OverviewTransactions />
+      <div className="flex min-h-screen">
+        <NavBar />
+        <main className="flex-1 lg:ml-64"> {/* Add margin for sidebar width */}
+          <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
+            <HeaderTitle />
+            <OverviewCurrentBalance />
+            <div className="grid grid-cols-1 lg:grid lg:grid-cols-2 lg:gap-6">
+              <div className="lg:space-y-6">
+                <OverviewPots />
+                <OverviewTransactions />
+              </div>
+              <div className="lg:space-y-6">
+                <OverviewBudgets />
+                <OverviewRecurringBills />
+              </div>
+            </div>
           </div>
-          <div className="lg:space-y-6">
-            <OverviewBudgets />
-            <OverviewRecurringBills />
-          </div>
-        </div>
+        </main>
       </div>
-      <NavBar />
     </main>
   );
 }
