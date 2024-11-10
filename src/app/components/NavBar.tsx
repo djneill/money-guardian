@@ -10,7 +10,11 @@ import PotsIcon from '../icons/PotsIcon';
 import BillsIcon from '../icons/BillsIcon';
 import DesktopSidebar from './DesktopNavBar';
 
-export default function NavBar() {
+type NavBarProps = {
+    onSidebarCollapse: (collapsed: boolean) => void;
+};
+
+export default function NavBar({ onSidebarCollapse }: NavBarProps) {
     const pathname = usePathname()
 
     const navItems = [
@@ -24,7 +28,7 @@ export default function NavBar() {
     return (
         <>
             {/* Desktop Sidebar */}
-            <DesktopSidebar />
+            <DesktopSidebar onCollapsedChange={onSidebarCollapse} />
 
             {/* Mobile Footer Nav */}
             <nav className='lg:hidden bg-grey-900 fixed bottom-0 left-0 right-0 px-4 pt-4 rounded-t-xl'>

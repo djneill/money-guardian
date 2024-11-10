@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react';
 import HeaderTitle from "./components/HeaderTitle";
 import NavBar from "./components/NavBar";
 import OverviewCurrentBalance from "./components/OverviewCurrentBalance";
@@ -7,11 +10,13 @@ import OverviewBudgets from "./components/OverviewBudgets";
 import OverviewRecurringBills from "./components/OverviewRecurringBills";
 
 export default function Home() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   return (
     <main>
       <div className="flex min-h-screen">
-        <NavBar />
-        <main className="flex-1 lg:ml-64"> {/* Add margin for sidebar width */}
+        <NavBar onSidebarCollapse={setIsSidebarCollapsed} />
+        <main className={`flex-1 transition-all duration-300 ${isSidebarCollapsed ? 'lg:ml-20' : 'lg:ml-64'}`}>
           <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
             <HeaderTitle />
             <OverviewCurrentBalance />
