@@ -13,6 +13,7 @@
     "appwrite": "^16.0.2",
     "chart.js": "^4.4.5",
     "next": "14.2.11",
+    "node-appwrite": "^14.1.0",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18"
