@@ -1,13 +1,9 @@
-// src/app/signup/page.jsx
-
-import {
-    getLoggedInUser
-} from "@/lib/server/appwrite";
-
+import { getLoggedInUser } from "@/lib/server/appwrite";
 import { ID } from "node-appwrite";
 import { createAdminClient } from "@/lib/server/appwrite";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { signUpWithGithub } from "@/lib/server/oauth";
 
 async function signUpWithEmail(formData: FormData) {
     "use server";
@@ -37,7 +33,7 @@ export default async function SignUpPage() {
 
     return (
         <>
-            <form action={signUpWithEmail}>
+            <form action={signUpWithEmail} className="text-black">
                 <input
                     id="email"
                     name="email"
@@ -58,6 +54,9 @@ export default async function SignUpPage() {
                     type="text"
                 />
                 <button type="submit">Sign up</button>
+            </form>
+            <form action={signUpWithGithub}>
+                <button className="text-black" type="submit">Sign up with GitHub</button>
             </form>
         </>
     );
