@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import HeaderTitle from "../components/HeaderTitle";
 import NavBar from "../components/NavBar";
