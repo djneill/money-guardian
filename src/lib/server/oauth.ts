@@ -1,20 +1,21 @@
 "use server";
 
-import { createAdminClient } from "@/lib/server/appwrite";
-import { redirect } from "next/navigation";
+import { createAdminClient } from "./appwrite";
 import { headers } from "next/headers";
-import { OAuthProvider } from "node-appwrite";
+import { redirect } from "next/navigation";
 
-export async function signUpWithGithub() {
+export async function signInWithGithub() {
     const { account } = await createAdminClient();
 
     const origin = headers().get("origin");
+    const successUrl = `${origin}/oauth`;
+    const failureUrl = `${origin}/signin`;
 
     const redirectUrl = await account.createOAuth2Token(
-        OAuthProvider.Github,
-        `${origin}/oauth`,
-        `${origin}/signup`,
+        "github",
+        successUrl,
+        failureUrl
     );
 
-    return redirect(redirectUrl);
-};
+    redirect(redirectUrl);
+}
