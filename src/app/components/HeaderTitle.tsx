@@ -9,6 +9,8 @@ export default function HeaderTitle() {
         switch (pathname) {
             case '/':
                 return 'Overview';
+            case '/dashboard/overview':
+                return 'Overview';
             case '/transactions':
                 return 'Transactions';
             case '/budget':
@@ -23,8 +25,10 @@ export default function HeaderTitle() {
     };
 
     return (
-        <h1 className='text-black text-preset-1 font-sans'>
-            {getTitle()}
-        </h1>
+        <div className="flex justify-start items-center">
+            <h1 className='text-black text-preset-1 font-sans'>
+                {getTitle()}
+            </h1>
+        </div>
     )
 }

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import {
-  ClerkProvider,
-  // SignInButton,
-  // SignedIn,
-  // SignedOut,
-  // UserButton
-} from '@clerk/nextjs'
+// import {
+//   ClerkProvider,
+// SignInButton,
+// SignedIn,
+// SignedOut,
+// UserButton
+// } from '@clerk/nextjs'
 
 const publicSans = localFont({
   src: [
@@ -47,12 +47,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${publicSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {/* <SignedOut>
+    // <ClerkProvider>
+    <html lang="en">
+      <body
+        className={`${publicSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {/* <SignedOut>
             <div className="">
               <SignInButton />
             </div>
@@ -60,9 +60,9 @@ export default function RootLayout({
           <SignedIn>
             <UserButton />
           </SignedIn> */}
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+        {children}
+      </body>
+    </html>
+    // </ClerkProvider>
   );
 }

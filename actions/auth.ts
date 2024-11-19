@@ -7,6 +7,37 @@ import { headers } from "next/headers";
 import { OAuthProvider } from "node-appwrite";
 import { redirect } from "next/navigation";
 
+export const getUserDetails = async (userId: string) => {
+    try {
+        const { database } = await createAdminClient();
+        const user = await database.listDocuments(
+            process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!,
+            process.env.NEXT_PUBLIC_APPWRITE_USERS_COLLECTION_ID!,
+            [Query.equal('userId', [userId])]
+        );
+        return JSON.parse(JSON.stringify(user.documents[0]))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function getLoggedInUser() {
+    const sessionClient = await createSessionClient();
+    if (!sessionClient) return null;
+    try {
+        const { account } = sessionClient;
+        const result = await account.get();
+        let user;
+        if (result) {
+            user = await getUserDetails(result.$id);
+        }
+
+        return JSON.parse(JSON.stringify(user));
+    } catch (error) {
+        return null;
+    }
+}
+
 export async function signUp(formData: FormData) {
     const username = formData.get("username") as string;
     const email = formData.get("email") as string;
