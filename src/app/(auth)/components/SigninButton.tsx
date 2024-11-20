@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
+import LogoutButton from './LogoutButton'
 
 interface Props {
     user: UserDetails | null
@@ -17,9 +18,13 @@ export default function SigninButton({ user }: Props) {
                         </div>
                     </Link>
                 ) : (
-                    <div className='flex items-center gap-x-2 text-preset-4 text-black'>
-                        {user?.username}
-                    </div>
+                    <>
+                        <div className='flex items-center gap-x-2 text-preset-4 text-black'>
+                            {user?.username}
+                            <LogoutButton />
+                        </div>
+
+                    </>
                 )}
             </div>
         </div>

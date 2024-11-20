@@ -8,6 +8,8 @@ import OverviewPots from "../../components/OverviewPots";
 import OverviewTransactions from "../../components/OverviewTransactions";
 import OverviewBudgets from "../../components/OverviewBudgets";
 import OverviewRecurringBills from "../../components/OverviewRecurringBills";
+// import SigninButtonWrapper from '@/app/(auth)/components/SigninButtonWrapper';
+// import ClientWrapperDesktopNav from '../../components/ClientWrapperDesktopNav';
 
 export default function Home() {
     const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);

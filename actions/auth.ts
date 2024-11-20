@@ -62,7 +62,7 @@ export async function signUp(formData: FormData) {
 
         const session = await account.createEmailPasswordSession(email, password);
 
-        cookies().set("appwrite-session", session.secret, {
+        (await cookies()).set("appwrite-session", session.secret, {
             path: "/",
             httpOnly: true,
             sameSite: "strict",
@@ -79,4 +79,17 @@ export async function signUp(formData: FormData) {
             error: error.message,
         }
     }
+}
+
+export async function signOut(): Promise<void> {
+    const sessionClient = await createSessionClient();
+    if (!sessionClient) redirect('/signin');
+    const { account } = sessionClient;
+
+    (await cookies()).delete("appwrite-session");
+    await account.deleteSession('current');
+
+    return redirect('/')
+
+
 }
