@@ -1,8 +1,8 @@
 import TitleBar from '@/app/components/TitleBar'
 import AuthImage from '@/app/components/AuthImage'
-import SignUpForm from '@/app/components/SignUpForm'
+import SignUpForm from '@/app/(auth)/components/SignUpForm'
 
-export default function Login() {
+export default function SignUp() {
     return (
         <main className='flex flex-col w-full min-h-screen'>
             <div className='lg:hidden'>

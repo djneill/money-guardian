@@ -81,6 +81,29 @@ export async function signUp(formData: FormData) {
     }
 }
 
+export async function signIn(formData: FormData) {
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    try {
+        const { account } = await createAdminClient();
+        const session = await account.createEmailPasswordSession(email, password);
+
+        (await cookies()).set('appwrite-session', session.secret, {
+            path: '/dashboard/overview',
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: process.env.NODE_ENV === 'production',
+        });
+        return { success: true };
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        return {
+            error: error.message
+        };
+    }
+}
+
 export async function signOut(): Promise<void> {
     const sessionClient = await createSessionClient();
     if (!sessionClient) redirect('/signin');

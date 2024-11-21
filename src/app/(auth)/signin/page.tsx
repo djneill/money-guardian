@@ -1,6 +1,6 @@
 import TitleBar from '@/app/components/TitleBar'
 import AuthImage from '@/app/components/AuthImage'
-import SignUpForm from '@/app/components/SignUpForm'
+import LoginForm from '../components/LoginForm'
 
 export default function Login() {
     return (
@@ -26,7 +26,7 @@ export default function Login() {
                 </div>
                 <div className='flex w-full lg:w-1/2 justify-center items-center h-full'>
                     <div className='m-auto'>
-                        <SignUpForm />
+                        <LoginForm />
                     </div>
                 </div>
             </div>

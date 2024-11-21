@@ -1,3 +1,5 @@
+// TODO Delete this file, split for client wrapper & server component
+
 import React from 'react'
 import { getLoggedInUser } from '../../../../actions/auth'
 import Link from 'next/link'

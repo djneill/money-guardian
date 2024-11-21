@@ -2,7 +2,8 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import AuthButton from './AuthButton';
-import { signUp } from '../../../actions/auth';
+import { signUp } from '../../../../actions/auth';
+import Link from 'next/link';
 
 export default function SignUpForm() {
     const [error, setError] = useState<string | null>(null);
@@ -57,6 +58,9 @@ export default function SignUpForm() {
                 <div className="mt-4">
                     <AuthButton type='signup' loading={loading} />
                 </div>
+                <h1>Already have an account?</h1>
+                <Link className='font-bold ml-2' href='/signin'>
+                    Sign In</Link>
                 {error && <p className='text-red-500'>{error}</p>}
             </form>
         </div>
