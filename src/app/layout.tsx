@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   description: "Personal Finance App",
 };
 
+// prevent static prerendering for auth state
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: Readonly<{
