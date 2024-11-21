@@ -9,7 +9,7 @@ import ClientWrapperDesktopNav from './components/ClientWrapperDesktopNav';
 import SigninButtonWrapper from './(auth)/components/SigninButtonWrapper';
 
 // prevent static prerendering for auth state
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export default function Home() {
   return (

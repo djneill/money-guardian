@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 // prevent static prerendering for auth state
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export default function RootLayout({
   children,
