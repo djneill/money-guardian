@@ -1,8 +1,13 @@
 import TitleBar from '@/app/components/TitleBar'
 import AuthImage from '@/app/components/AuthImage'
 import LoginForm from '../components/LoginForm'
+import { getLoggedInUser } from '../../../../actions/auth';
+import { redirect } from 'next/navigation';
 
-export default function Login() {
+export default async function Login() {
+    const user: UserDetails | null = await getLoggedInUser();
+    if (user) redirect('/dashboard/overview');
+
     return (
         <main className='flex flex-col w-full min-h-screen'>
             <div className='lg:hidden'>

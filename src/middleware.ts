@@ -5,11 +5,11 @@ import { getLoggedInUser } from '@/lib/server/appwrite'
 export async function middleware(request: NextRequest) {
     const user = await getLoggedInUser()
 
-    if (!user && !request.nextUrl.pathname.startsWith('/signup')) {
-        return NextResponse.redirect(new URL('/signup', request.url))
+    if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
+        return NextResponse.redirect(new URL('/signin', request.url))
     }
 
-    if (user && request.nextUrl.pathname === '/') {
+    if (user && (request.nextUrl.pathname === '/')) {
         return NextResponse.redirect(new URL('/dashboard/overview', request.url))
     }
 
@@ -17,7 +17,12 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ['/dashboard/:path*']
+    matcher: [
+        // All routes that need middleware checks
+        '/signin',
+        '/signup',
+        '/dashboard/:path*'
+    ]
 }
 
 // ####### CLERK MIDDLEWARE #######
