@@ -13,14 +13,14 @@ export default function SigninButton({ user }: Props) {
             <div>
                 {!user ? (
                     <Link href={'/signin'}>
-                        <div className='bg-red text-white text-preset-4 py-2 px-4 rounded-lg'>
+                        <div className='bg-green text-white text-preset-3 py-2 px-4 rounded-lg shadow-black shadow-lg'>
                             Login
                         </div>
                     </Link>
                 ) : (
                     <>
-                        <div className='flex items-center gap-x-2 text-preset-4 text-black'>
-                            {user?.username}
+                        <div className='flex items-center gap-x-4 text-black text-preset-1 font-sans '>
+                            Welcome {user?.username}
                             <LogoutButton />
                         </div>
 

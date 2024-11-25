@@ -12,7 +12,7 @@ export default function LogoutButton() {
     };
 
     return (
-        <div className='bg-red text-white text-preset-4 px-4 py-2 rounded-lg cursor-pointer'>
+        <div className='bg-red text-white text-preset-3 px-4 py-2 rounded-lg cursor-pointer shadow-black shadow-lg'>
             <form onSubmit={handleLogout} action="">
                 <button type='submit' disabled={loading}>
                     {loading ? 'Signing out...' : 'Sign Out'}

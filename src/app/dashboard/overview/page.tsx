@@ -5,12 +5,12 @@ import OverviewPots from "../../components/OverviewPots";
 import OverviewTransactions from "../../components/OverviewTransactions";
 import OverviewBudgets from "../../components/OverviewBudgets";
 import OverviewRecurringBills from "../../components/OverviewRecurringBills";
-import ClientWrapperDesktopNav from '../../components/ClientWrapperDesktopNav';
+import DashClientWrapperDesktopNav from '../components/DashClientWrapperDesktopNav';
 import SigninButtonWrapper from '../../(auth)/components/SigninButtonWrapper';
 
 export default function Home() {
     return (
-        <ClientWrapperDesktopNav>
+        <DashClientWrapperDesktopNav>
             <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
                 <div className="flex justify-between items-center">
                     <HeaderTitle />
@@ -30,6 +30,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-        </ClientWrapperDesktopNav>
+        </DashClientWrapperDesktopNav>
     );
 }
