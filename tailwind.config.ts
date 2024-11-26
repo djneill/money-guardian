@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
 
 const config: Config = {
   content: [
@@ -6,7 +7,10 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  extract,
   theme: {
+    screens,
+    fontSize,
     extend: {
       backgroundColor: {
         'background': '#171717',
@@ -89,6 +93,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [fluid],
 };
 export default config;

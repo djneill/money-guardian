@@ -11,7 +11,7 @@ import SigninButtonWrapper from './(auth)/components/SigninButtonWrapper';
 export default function Home() {
   return (
     <ClientWrapperDesktopNav>
-      <div className="mx-4 sm:mx-10 my-6 pb-8 mb-12">
+      <div className="~mx-4/10 my-6 pb-8 mb-12">
         <div className="flex justify-between items-center">
           <HeaderTitle />
           <Suspense fallback={<div>Loading...</div>}>
