@@ -1,39 +1,32 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { SESSION_COOKIE } from '@/lib/server/const'
+import { getLoggedInUser } from '@/lib/server/appwrite'
 
 const protectedRoutes = ['/dashboard']
 
 export async function middleware(request: NextRequest) {
-    console.log("DEBUG: Middleware called for:", request.nextUrl.pathname);
+    // Check if this is an OAuth callback redirect
+    const isOAuthCallback = request.nextUrl.pathname === '/api/oauth';
+    const isOAuthRedirect = request.nextUrl.pathname.startsWith('/dashboard') &&
+        request.cookies.has('auth-state');
 
-    const hasSession = request.cookies.has(SESSION_COOKIE);
-    const authState = request.cookies.get("auth-state");
+    // Allow OAuth-related requests to proceed
+    if (isOAuthCallback || isOAuthRedirect) {
+        return NextResponse.next();
+    }
 
-    console.log("DEBUG: Auth state:", {
-        hasSession,
-        authState: authState?.value,
-        path: request.nextUrl.pathname
-    });
+    // For all other requests, check user authentication
+    const user = await getLoggedInUser()
 
     const isProtected = protectedRoutes.some((route) =>
         request.nextUrl.pathname.startsWith(route)
     );
 
-    // If we're in the OAuth redirect flow, allow it
-    if (authState?.value === "redirecting") {
-        console.log("DEBUG: Auth redirect in progress, allowing through");
-        return NextResponse.next();
-    }
-
-    // Normal route protection
-    if (!hasSession && isProtected) {
-        console.log("DEBUG: No session, redirecting to signin");
+    if (!user && isProtected) {
         return NextResponse.redirect(new URL('/signin', request.nextUrl.origin))
     }
 
-    if (hasSession && (request.nextUrl.pathname === '/')) {
-        console.log("DEBUG: Has session, redirecting to dashboard");
+    if (user && (request.nextUrl.pathname === '/')) {
         return NextResponse.redirect(new URL('/dashboard/overview', request.nextUrl.origin))
     }
 

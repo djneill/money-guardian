@@ -8,6 +8,8 @@ import OverviewRecurringBills from "../../components/OverviewRecurringBills";
 import DashClientWrapperDesktopNav from '../components/DashClientWrapperDesktopNav';
 import SigninButtonWrapper from '../../(auth)/components/SigninButtonWrapper';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
     return (
         <DashClientWrapperDesktopNav>
