@@ -15,9 +15,15 @@ export const getUserDetails = async (userId: string) => {
             process.env.NEXT_PUBLIC_APPWRITE_USERS_COLLECTION_ID!,
             [Query.equal('userId', [userId])]
         );
+
+        if (!user || user.documents.length === 0) {
+            return null;
+        }
+
         return JSON.parse(JSON.stringify(user.documents[0]))
     } catch (error) {
-        console.log(error)
+        console.log('Error getting user deails:', error)
+        return null
     }
 }
 
@@ -27,13 +33,27 @@ export async function getLoggedInUser() {
     try {
         const { account } = sessionClient;
         const result = await account.get();
-        let user;
-        if (result) {
+
+        if (!result) return null;
+
+        let user = null
+        try {
             user = await getUserDetails(result.$id);
+        } catch (error) {
+            console.error('Error getting user details:', error);
         }
 
-        return JSON.parse(JSON.stringify(user));
+        if (!user) {
+            user = {
+                $id: result.$id,
+                email: result.email,
+                username: result.name
+            };
+        }
+
+        return user;
     } catch (error) {
+        console.error('Error in getLoggedInUser:', error);
         return null;
     }
 }
@@ -115,4 +135,31 @@ export async function signOut(): Promise<void> {
     return redirect('/')
 
 
+}
+
+export async function signUpWithGithub() {
+    const { account } = await createAdminClient();
+
+    const origin = (await headers()).get("origin") || 'http://localhost:3000';
+
+    const redirectUrl = await account.createOAuth2Token(
+        OAuthProvider.Github,
+        `${origin}/api/oauth`,
+        `${origin}/signup`,
+    );
+
+    return redirectUrl;
+}
+
+export async function signUpWithGoogle() {
+    const { account } = await createAdminClient();
+    const origin = (await headers()).get("origin") || 'http://localhost:3000';
+
+    const redirectUrl = await account.createOAuth2Token(
+        OAuthProvider.Google,
+        `${origin}/api/oauth`,
+        `${origin}/signup`,
+    );
+
+    return redirectUrl;
 }

@@ -6,7 +6,6 @@ import LogoutButton from './LogoutButton'
 interface Props {
     user: UserDetails | null
 }
-console.log('hello')
 export default function SigninButton({ user }: Props) {
     return (
         <div>

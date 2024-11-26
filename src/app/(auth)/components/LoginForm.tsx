@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import AuthButton from './AuthButton';
 import { signIn } from '../../../../actions/auth';
 import Link from 'next/link';
+import LoginGithub from './LoginGithub';
+import LoginGoogle from './LoginGoogle';
 
 export default function LoginForm() {
     const [error, setError] = useState<string | null>(null);
@@ -53,6 +55,8 @@ export default function LoginForm() {
                 <Link className='font-bold ml-2' href='/signup'>
                     Sign Up</Link>
                 {error && <p className='text-red-500'>{error}</p>}
+                <LoginGithub />
+                <LoginGoogle />
             </form>
         </div>
     );
