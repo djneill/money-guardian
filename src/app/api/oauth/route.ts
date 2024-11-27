@@ -15,6 +15,8 @@ export async function GET(request: NextRequest) {
 
         // Create session
         const session = await account.createSession(userId, secret);
+
+        // Get user details
         const userDetails = await user.get(userId);
 
         // Check if user exists in database
@@ -37,25 +39,26 @@ export async function GET(request: NextRequest) {
             );
         }
 
-        // Create response
         const response = NextResponse.redirect(
-            new URL('/dashboard/overview', request.nextUrl.origin)
+            new URL('/dashboard/overview', request.nextUrl.origin),
+            {
+                status: 302
+            }
         );
 
-        // Set cookies
         response.cookies.set("appwrite-session", session.secret, {
             path: "/",
             httpOnly: true,
-            sameSite: "strict",
-            secure: true,
+            sameSite: "lax",
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 60 * 60 * 24 * 30 // 30 days
         });
-
-        // Add cache control headers
-        response.headers.set('Cache-Control', 'no-store, max-age=0');
-        response.headers.set('Pragma', 'no-cache');
 
         return response;
     } catch (error) {
-        return NextResponse.redirect(`${request.nextUrl.origin}/signin?error=oauth_failed`);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        return NextResponse.redirect(
+            `${request.nextUrl.origin}/signin?error=oauth_failed&details=${encodeURIComponent(errorMessage)}`
+        );
     }
 }
