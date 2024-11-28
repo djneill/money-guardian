@@ -1,5 +1,5 @@
 'use client'
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, Suspense } from 'react';
 import { Client, Account } from "appwrite";
 import { useSearchParams } from 'next/navigation';
 
@@ -9,7 +9,7 @@ const client = new Client()
 
 const account = new Account(client);
 
-const PasswordReset = () => {
+const PasswordResetForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [status, setStatus] = useState('');
@@ -55,6 +55,14 @@ const PasswordReset = () => {
             </form>
             {status && <p>{status}</p>}
         </div>
+    );
+};
+
+const PasswordReset = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <PasswordResetForm />
+        </Suspense>
     );
 };
 
