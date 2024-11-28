@@ -22,7 +22,7 @@ const PasswordRecovery = () => {
             await account.createRecovery(email, redirectUrl);
             setStatus('Recovery email sent! Please check your inbox.');
         } catch (error) {
-            setStatus('Error: ' + error.message);
+            setStatus('Error: ' + (error as Error).message);
         }
     };
 

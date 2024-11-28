@@ -29,7 +29,7 @@ const PasswordReset = () => {
                 throw new Error('Passwords do not match');
             }
 
-            await account.updateRecovery(userId, secret, password, password);
+            await account.updateRecovery(userId, secret, password);
             setStatus('Password successfully reset!');
         } catch (error) {
             setStatus('Error: ' + (error as Error).message);
