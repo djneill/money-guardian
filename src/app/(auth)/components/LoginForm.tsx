@@ -54,6 +54,7 @@ export default function LoginForm() {
                 <h1>Don&apos;t have an account?</h1>
                 <Link className='font-bold ml-2' href='/signup'>
                     Sign Up</Link>
+                <h2 className='text-white'>Forgot your password? <Link href={'/password-recovery'}> Click Here</Link></h2>
                 {error && <p className='text-red-500'>{error}</p>}
                 <LoginGithub />
                 <LoginGoogle />
