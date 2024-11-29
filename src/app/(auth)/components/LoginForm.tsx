@@ -30,34 +30,37 @@ export default function LoginForm() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} action="" className='w-full flex flex-col gap-4 bg-grey-900 p-6 rounded-md '>
+            <form onSubmit={handleSubmit} action="" className='w-80 sm:w-[560px] flex flex-col gap-4 ~px-5/8 ~py-6/8 p- rounded-lg bg-white text-black justify-center '>
+                <h1 className='text-preset-1 text-black pb-8'>Login</h1>
                 <div>
-                    <label htmlFor="Email" className='flex text-preset-4'>Email</label>
+                    <label htmlFor="Email" className='flex text-preset-5-bold'>Email</label>
                     <input type="text"
-                        placeholder='Email'
+                        placeholder='Enter Your Email'
                         id='email'
                         name='email'
-                        className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-white text-black' />
+                        className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-grey-500 text-grey-500' />
                 </div>
 
                 <div>
-                    <label htmlFor="password" className='flex text-preset-4'>Password</label>
+                    <label htmlFor="password" className='flex text-preset-5-bold'>Password</label>
                     <input type="password"
-                        placeholder='Password'
+                        placeholder='Enter Your Password'
                         name='password'
                         id='password'
-                        className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-white text-black' />
+                        className='mt-1 w-full px-4 p-2 h-10 rounded-md border border-grey-500 text-grey-500' />
                 </div>
                 <div className="mt-4">
                     <AuthButton type='login' loading={loading} />
                 </div>
-                <h1>Don&apos;t have an account?</h1>
-                <Link className='font-bold ml-2' href='/signup'>
-                    Sign Up</Link>
-                <h2 className='text-white'>Forgot your password? <Link href={'/password-recovery'}> Click Here</Link></h2>
+                <div className="flex">
+                    <h1 className='text-preset-4'>Need to create an account?</h1>
+                    <Link className='text-preset-4-bold ml-2 underline' href='/signup'>
+                        Sign Up</Link>
+                </div>
+                <h2 className='text-preset-4'>Forgot your password? <Link href={'/password-recovery'} className='text-preset-4-bold ml-2 underline'> Click Here</Link></h2>
                 {error && <p className='text-red-500'>{error}</p>}
-                <LoginGithub />
-                <LoginGoogle />
+                <LoginGithub type='login' />
+                <LoginGoogle type='login' />
             </form>
         </div>
     );

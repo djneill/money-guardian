@@ -140,7 +140,7 @@ export async function signOut(): Promise<void> {
 export async function signUpWithGithub() {
     const { account } = await createAdminClient();
 
-    const origin = (await headers()).get("origin") || 'http://localhost:3000';
+    const origin = (await headers()).get("origin") || 'https://money-guardian.vercel.app';
 
     const redirectUrl = await account.createOAuth2Token(
         OAuthProvider.Github,

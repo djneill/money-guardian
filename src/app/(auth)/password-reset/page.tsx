@@ -1,69 +1,37 @@
-'use client'
-import React, { FormEvent, useState, Suspense } from 'react';
-import { Client, Account } from "appwrite";
-import { useSearchParams } from 'next/navigation';
+import TitleBar from '@/app/components/TitleBar'
+import AuthImage from '@/app/components/AuthImage'
+import PassReset from '../components/PassReset'
 
-const client = new Client()
-    .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-    .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!);
 
-const account = new Account(client);
-
-const PasswordResetForm = () => {
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [status, setStatus] = useState('');
-    const searchParams = useSearchParams();
-
-    const handleReset = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        try {
-            const userId = searchParams.get('userId');
-            const secret = searchParams.get('secret');
-
-            if (!userId || !secret) {
-                throw new Error('Missing recovery parameters');
-            }
-
-            if (password !== confirmPassword) {
-                throw new Error('Passwords do not match');
-            }
-
-            await account.updateRecovery(userId, secret, password);
-            setStatus('Password successfully reset!');
-        } catch (error) {
-            setStatus('Error: ' + (error as Error).message);
-        }
-    };
+export default function passwordResetPage() {
 
     return (
-        <div>
-            <form onSubmit={handleReset}>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter new password"
-                />
-                <input
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="Confirm new password"
-                />
-                <button type="submit">Reset Password</button>
-            </form>
-            {status && <p>{status}</p>}
-        </div>
-    );
-};
+        <main className='flex flex-col w-full min-h-screen'>
+            <div className='lg:hidden'>
+                <TitleBar />
+            </div>
 
-const PasswordReset = () => {
-    return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <PasswordResetForm />
-        </Suspense>
-    );
-};
-
-export default PasswordReset;
+            <div className='flex flex-col lg:flex-row h-screen'>
+                <div className='hidden lg:flex lg:w-1/2 relative overflow-hidden bg-grey-900 m-2 rounded-xl'>
+                    <div className='absolute inset-0 flex flex-col justify-between p-8 text-white z-10'>
+                        <p className='font-sans text-preset-1'>Money Guardian</p>
+                        <div>
+                            <h2 className='font-sans text-preset-1 mb-4'>Keep track of your money and save for your future</h2>
+                            <p className='font-sans text-preset-4'>Personal finance app puts you in control of your spending. Track transactions, set budgets, and add to savings pots easily.</p>
+                        </div>
+                    </div>
+                    <AuthImage
+                        width={560}
+                        height={920}
+                        className='object-cover w-[560px] h-full'
+                    />
+                </div>
+                <div className='flex w-full lg:w-1/2 justify-center items-center h-full'>
+                    <div className='m-auto'>
+                        <PassReset />
+                    </div>
+                </div>
+            </div>
+        </main>
+    )
+}

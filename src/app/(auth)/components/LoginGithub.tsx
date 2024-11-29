@@ -4,7 +4,13 @@ import React, { useTransition } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import { signUpWithGithub } from '../../../../actions/auth';
 
-export default function LoginGithub() {
+interface LoginButtonProps {
+    type: 'login' | 'signup';
+}
+
+export default function LoginGithub({ type }: LoginButtonProps) {
+    const githubText = type === 'login' ? 'Login with GitHub' : 'Sign Up with GitHub';
+
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
     const handleGithubLogin = () => {
@@ -16,11 +22,11 @@ export default function LoginGithub() {
     return (
         <div
             onClick={handleGithubLogin}
-            className=' flex justify-center items-center w-full gap-4 hover:cursor-pointer mt-6 h-12 bg-blue rounded-md'
+            className=' flex justify-center items-center w-full gap-4 hover:cursor-pointer mt-2 h-12 bg-gradient-to-r from-[#040D21] to-[#2188FF] rounded-lg shadow-lg shadow-black'
         >
             <FaGithub className="text-white" />
             <p className='text-white'>
-                {isPending ? "Redirecting..." : "Login with Github"}
+                {isPending ? "Redirecting..." : githubText}
             </p>
         </div>
     )
