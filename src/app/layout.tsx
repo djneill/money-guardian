@@ -32,6 +32,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Money Guardian",
   description: "Personal Finance App",
+  openGraph: {
+    images: '/MgMeta.png',
+  },
 };
 
 export default function RootLayout({
