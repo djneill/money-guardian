@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   title: "Money Guardian",
   description: "Personal Finance App",
   openGraph: {
-    images: '/MgMeta.png',
+    images: 'https://money-guardian.vercel.app/MgMeta.png',
   },
 };
 
