@@ -31,9 +31,26 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Money Guardian",
-  description: "Personal Finance App",
+  description: "Personal Finance App by DJ Neill",
   openGraph: {
-    images: 'https://money-guardian.vercel.app/MgMeta.png',
+    title: 'Money Guardian',
+    description: 'Personal Finance App by DJ Neill',
+    images: [
+      {
+        url: 'https://money-guardian.vercel.app/assets/images/MgMeta.png',
+        width: 1200,
+        height: 630,
+        alt: 'Money Guardian',
+      },
+    ],
+    siteName: 'Money Guardian',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Money Guardian',
+    description: 'Personal Finance App by DJ Neill',
+    images: ['https://money-guardian.vercel.app/assets/images/MgMeta.png'],
+    creator: '@CodingGuitarist',
   },
 };
 
