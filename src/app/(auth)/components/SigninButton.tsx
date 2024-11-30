@@ -19,7 +19,7 @@ export default function SigninButton({ user }: Props) {
                 ) : (
                     <>
                         <div className='flex items-center gap-x-4 text-black text-preset-1 font-sans '>
-                            Welcome {user?.username}
+                            <div className="hidden sm:flex">Welcome {user?.username}</div>
                             <LogoutButton />
                         </div>
 
